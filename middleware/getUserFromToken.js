@@ -11,6 +11,9 @@ export default async function getUserFromToken(req, res, next) {
     const { id } = verifyToken(token);
     const user = await getUserById(id);
     req.user = user;
+
+    console.log("Authenticated user:", req.user);
+
     next();
   } catch (e) {
     console.error(e);
